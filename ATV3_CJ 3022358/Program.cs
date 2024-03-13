@@ -1,7 +1,6 @@
 ﻿using System;
-
-namespace ATV-CJ3022358
-internal class Program
+namespace ATV_CJ3022358
+{ internal class Program
 {
     static void Main(string[] args)
     {
@@ -10,58 +9,45 @@ internal class Program
 
         if (grade >= 6)
         {
-            Console.WriteLine("Aprovado");
+                Console.WriteLine("Aprovado");
+
+         else Console.WriteLine("reprovado");
 
         }
     }
-
-    public override bool Equals(object? obj)
-    {
-        return base.Equals(obj);
-    }
-
-    public override int GetHashCode()
-    {
-        return base.GetHashCode();
-    }
-
-    public override string? ToString()
-    {
-        return base.ToString();
-    }
 }
- 
-//ATIVIDADE 3
 
-{
-    static void Main(string[] args)
-{
-    Random random = new Random();
-    int numeroAleatorio = random.Next(1, 101);
-    int tentativasRestantes = 3;
+    //ATIVIDADE 3
 
-    Console.WriteLine("Bem-vindo ao jogo de adivinhação!");
-    Console.WriteLine("Tente adivinhar o número entre 1 e 100.");
-
-    while (tentativasRestantes > 0)
+    private static void Main(string[] args)
     {
-        Console.Write("Digite um número: ");
-        if (int.TryParse(Console.ReadLine(), out int palpite))
+        Random random = new Random();
+        int numeroAleatorio = random.Next(1, 101);
+        int tentativasRestantes = 3;
+
+        Console.WriteLine("Bem-vindo ao jogo de adivinhação!");
+        Console.WriteLine("Tente adivinhar o número entre 1 e 100.");
+
+        while (tentativasRestantes > 0)
         {
-            if (palpite == numeroAleatorio)
+            Console.Write("Digite um número: ");
+            if (int.TryParse(Console.ReadLine(), out int palpite))
             {
-                Console.WriteLine("Parabéns! Você acertou o número.");
-                return;
+                if (palpite == numeroAleatorio)
+                {
+                    Console.WriteLine("Parabéns! Você acertou o número.");
+                    return;
+                }
+
+                Console.WriteLine(palpite < numeroAleatorio
+                    ? "O número pensado é maior que o seu palpite."
+                    : "O número pensado é menor que o seu palpite.");
+
             }
-
-            Console.WriteLine(palpite < numeroAleatorio
-                ? "O número pensado é maior que o seu palpite."
-                : "O número pensado é menor que o seu palpite.");
-
         }
     }
 }
-}// atividade 1
+// atividade 1
 Console.Write("Digite um número: ");
 int numero = int.Parse(Console.ReadLine());
 
@@ -177,3 +163,80 @@ else
     Console.WriteLine("O computador ganhou!");
 }
 
+//atividade 7
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("Bem-vindo à calculadora de descontos!");
+        Console.WriteLine("Digite o valor total da compra:");
+
+        decimal valorTotal = Convert.ToDecimal(Console.ReadLine());
+        decimal desconto = CalcularDesconto(valorTotal);
+        decimal valorFinal = valorTotal - (valorTotal * desconto);
+
+        Console.WriteLine($"Valor total: R${valorTotal}");
+        Console.WriteLine($"Desconto: {desconto * 100}%");
+        Console.WriteLine($"Valor final: R${valorFinal}");
+
+        Console.ReadLine();
+    }
+
+    static decimal CalcularDesconto(decimal valorTotal)
+    {
+        if (valorTotal > 100 && valorTotal <= 200)
+        {
+            return 0.1m; // 10% de desconto
+        }
+        else if (valorTotal > 200 && valorTotal <= 300)
+        {
+            return 0.2m; // 20% de desconto
+        }
+        else if (valorTotal > 300 && valorTotal <= 400)
+        {
+            return 0.3m; // 30% de desconto
+        }
+        else if (valorTotal > 400)
+        {
+            return 0.4m; // 40% de desconto
+        }
+        else
+        {
+            return 0; // Sem desconto
+        }
+    }
+}
+//atividade 8
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("Calculadora de IMC - Índice de Massa Corporal");
+        Console.WriteLine("Digite o seu peso em kg:");
+        double peso = Convert.ToDouble(Console.ReadLine());
+
+        Console.WriteLine("Digite a sua altura em metros:");
+        double altura = Convert.ToDouble(Console.ReadLine());
+
+        double imc = peso / (altura * altura);
+        string categoria = "";
+
+        if (imc < 18.5)
+            categoria = "Abaixo do peso";
+        else if (imc <= 24.9)
+            categoria = "Peso normal";
+        else if (imc <= 29.9)
+            categoria = "Sobrepeso";
+        else if (imc <= 34.9)
+            categoria = "Obesidade grau I";
+        else if (imc <= 39.9)
+            categoria = "Obesidade grau II";
+        else
+            categoria = "Obesidade grau III";
+
+        Console.WriteLine($"Seu IMC é: {imc:F2}");
+        Console.WriteLine($"Categoria: {categoria}");
+
+        Console.ReadLine();
+    }
+}
